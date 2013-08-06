@@ -37,6 +37,8 @@ public class Main {
             @Override
             public void run() {
                 MainFrame mainFrame = new MainFrame();
+                mainFrame.setSize(800, 600);
+                mainFrame.setLocationRelativeTo(null);
                 mainFrame.setVisible(true);
             }
         });
