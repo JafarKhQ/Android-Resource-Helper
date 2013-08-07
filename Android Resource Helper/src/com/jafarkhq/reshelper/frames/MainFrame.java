@@ -15,6 +15,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -32,6 +33,7 @@ public class MainFrame extends JFrame {
     private JScrollPane mRightSidePanel;
     private JTextField mSearchTextField;
     private JList mDrawablesList;
+    private JProgressBar scannerProgressBar;
 
     // http://www.apl.jhu.edu/~hall/java/Swing-Tutorial/Swing-Tutorial-JTree.html
     // http://docs.oracle.com/javase/tutorial/uiswing/components/tree.html
@@ -65,6 +67,12 @@ public class MainFrame extends JFrame {
         mDrawablesList = new JList();
         mDrawablesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         dummy.add(mDrawablesList, BorderLayout.CENTER);
+
+        scannerProgressBar = new JProgressBar();
+        scannerProgressBar.setIndeterminate(true);
+        scannerProgressBar.setVisible(false);
+        dummy.add(scannerProgressBar, BorderLayout.SOUTH);
+
         mLeftSidePanel.setViewportView(dummy);
     }
 
@@ -134,9 +142,8 @@ public class MainFrame extends JFrame {
         if (retVal == JFileChooser.APPROVE_OPTION) {
             File projectDir = chooser.getSelectedFile();
             LOGGER.info(projectDir.getAbsolutePath());
-            ResourceScanner resourceScanner = new ResourceScanner(projectDir);
-            resourceScanner.startScanner();
-            mDrawablesList.setModel(new DrawablesListModel(resourceScanner.getResourcesTree()));
+
+            new ScannerWorker(projectDir).start();;
 
         }
     }
@@ -146,5 +153,37 @@ public class MainFrame extends JFrame {
         dispose();
 
         System.exit(0);
+    }
+
+    class ScannerWorker extends Thread {
+
+        private File mProjectDir;
+
+        public ScannerWorker(File projectDir) {
+            this.mProjectDir = projectDir;
+
+        }
+
+        @Override
+        public void run() {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    scannerProgressBar.setVisible(true);
+                }
+            });
+
+            ResourceScanner resourceScanner = new ResourceScanner(mProjectDir);
+            resourceScanner.startScanner();
+            mDrawablesList.setModel(new DrawablesListModel(resourceScanner.getResourcesTree()));
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    scannerProgressBar.setVisible(false);
+                }
+            });
+
+        }
     }
 }
