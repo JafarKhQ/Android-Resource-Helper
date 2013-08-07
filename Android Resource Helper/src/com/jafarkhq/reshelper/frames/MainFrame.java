@@ -3,6 +3,7 @@ package com.jafarkhq.reshelper.frames;
 import com.jafarkhq.reshelper.ResourceScanner;
 import com.jafarkhq.reshelper.models.DrawablesListModel;
 import com.jafarkhq.reshelper.models.ResourceInfo;
+import com.jafarkhq.reshelper.renderers.DrawablesListRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -70,6 +71,7 @@ public class MainFrame extends JFrame {
         dummy.add(mSearchTextField, BorderLayout.NORTH);
 
         mDrawablesList = new JList();
+        mDrawablesList.setCellRenderer(new DrawablesListRenderer());
         mDrawablesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         dummy.add(mDrawablesList, BorderLayout.CENTER);
 
