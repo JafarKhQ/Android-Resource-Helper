@@ -29,37 +29,37 @@ import javax.swing.ListCellRenderer;
  * @author mahdihijazi
  */
 public class DrawablesListRenderer extends JPanel implements ListCellRenderer {
-
+    
     private static final int PREFERD_IMAGE_SIZE = 40;
     private JLabel drawableImage;
     private JLabel drawableName;
     private BufferedImage mDefaultImage;
-
+    
     public DrawablesListRenderer() {
         super();
-        setOpaque(false);
+        //setOpaque(false);
         setLayout(new FlowLayout(FlowLayout.LEFT));
         drawableImage = new JLabel();
-
+        
         add(drawableImage);
-
+        
         drawableName = new JLabel();
         add(drawableName);
-
+        
         mDefaultImage = new BufferedImage(PREFERD_IMAGE_SIZE, PREFERD_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);
         Graphics g = mDefaultImage.createGraphics();
         g.setColor(new Color(0, 0, 0, 0));
         g.fillRect(0, 0, PREFERD_IMAGE_SIZE, PREFERD_IMAGE_SIZE);
-
+        
     }
-
+    
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         synchronized (drawableImage) {
             ResourceInfo resourceInfo = (ResourceInfo) value;
             drawableName.setText(resourceInfo.getName());
             drawableImage.putClientProperty(ResourceInfo.KEY_RESOURCE_INFO, resourceInfo);
-
+            
             if (resourceInfo.getResourceThumbnail() != null) {
                 final ImageIcon icon = new ImageIcon(resourceInfo.getResourceThumbnail());
                 drawableImage.setIcon(icon);
@@ -69,8 +69,15 @@ public class DrawablesListRenderer extends JPanel implements ListCellRenderer {
                 LoadImagesWorker.getInstance().loadImage(new LoadImageRunnable(drawableImage, resourceInfo));
             }
         }
-
+        
+        if (isSelected) {
+            setOpaque(true);
+            setBackground(Color.GRAY);
+        } else {
+            setOpaque(false);
+        }
+        
         return this;
-
+        
     }
 }

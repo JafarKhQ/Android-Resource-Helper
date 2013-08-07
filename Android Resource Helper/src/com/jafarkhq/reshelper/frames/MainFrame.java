@@ -16,6 +16,7 @@ import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame {
 
     private final static Logger LOGGER = Logger.getLogger(MainFrame.class
             .getName());
-    private javax.swing.JScrollPane mLeftSidePanel;
+    private JPanel mLeftSidePanel;
     private JScrollPane mRightSidePanel;
     private JTextField mSearchTextField;
     private JList mDrawablesList;
@@ -60,27 +61,25 @@ public class MainFrame extends JFrame {
     }
 
     private void initLeftSidePanel() {
-        mLeftSidePanel = new javax.swing.JScrollPane();
-
-        Container dummy = new Container();
-        BorderLayout borderLayout = new BorderLayout();
-        dummy.setLayout(borderLayout);
+        mLeftSidePanel = new JPanel(new BorderLayout());
 
         mSearchTextField = new JTextField();
         mSearchTextField.getDocument().addDocumentListener(searchTextFieldListener);
-        dummy.add(mSearchTextField, BorderLayout.NORTH);
+        mLeftSidePanel.add(mSearchTextField, BorderLayout.NORTH);
 
+        JScrollPane listScroll = new JScrollPane();
         mDrawablesList = new JList();
         mDrawablesList.setCellRenderer(new DrawablesListRenderer());
         mDrawablesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        dummy.add(mDrawablesList, BorderLayout.CENTER);
+        listScroll.setViewportView(mDrawablesList);
+        mLeftSidePanel.add(listScroll, BorderLayout.CENTER);
 
         scannerProgressBar = new JProgressBar();
         scannerProgressBar.setIndeterminate(true);
         scannerProgressBar.setVisible(false);
-        dummy.add(scannerProgressBar, BorderLayout.SOUTH);
+        mLeftSidePanel.add(scannerProgressBar, BorderLayout.SOUTH);
 
-        mLeftSidePanel.setViewportView(dummy);
+       
     }
 
     private void initRightSidePanel() {
