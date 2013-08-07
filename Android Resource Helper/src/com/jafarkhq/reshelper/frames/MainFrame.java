@@ -2,6 +2,7 @@ package com.jafarkhq.reshelper.frames;
 
 import com.jafarkhq.reshelper.ResourceScanner;
 import com.jafarkhq.reshelper.models.DrawablesListModel;
+import com.jafarkhq.reshelper.models.ResourceInfo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -20,6 +21,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -33,6 +36,7 @@ public class MainFrame extends JFrame {
     private JScrollPane mRightSidePanel;
     private JTextField mSearchTextField;
     private JList mDrawablesList;
+    private DrawablesListModel mDrawablesListModel;
     private JProgressBar scannerProgressBar;
 
     // http://www.apl.jhu.edu/~hall/java/Swing-Tutorial/Swing-Tutorial-JTree.html
@@ -62,6 +66,7 @@ public class MainFrame extends JFrame {
         dummy.setLayout(borderLayout);
 
         mSearchTextField = new JTextField();
+        mSearchTextField.getDocument().addDocumentListener(searchTextFieldListener);
         dummy.add(mSearchTextField, BorderLayout.NORTH);
 
         mDrawablesList = new JList();
@@ -155,6 +160,25 @@ public class MainFrame extends JFrame {
         System.exit(0);
     }
 
+    private void setDrawablesListModelFilter(final String filter) {
+        if (mDrawablesListModel != null) {
+            if (filter != null && filter.trim().length() > 0) {
+                mDrawablesListModel.setFilter(new DrawablesListModel.Filter() {
+                    @Override
+                    public boolean accept(Object element) {
+                        ResourceInfo resourceInfo = (ResourceInfo) element;
+                        return resourceInfo.getName().contains(filter);
+
+                    }
+                });
+
+            } else {
+                mDrawablesListModel.setFilter(null);
+            }
+        }
+
+    }
+
     class ScannerWorker extends Thread {
 
         private File mProjectDir;
@@ -175,15 +199,33 @@ public class MainFrame extends JFrame {
 
             ResourceScanner resourceScanner = new ResourceScanner(mProjectDir);
             resourceScanner.startScanner();
-            mDrawablesList.setModel(new DrawablesListModel(resourceScanner.getResourcesTree()));
-            
+            mDrawablesListModel = new DrawablesListModel(resourceScanner.getResourcesTree());
+            mDrawablesList.setModel(mDrawablesListModel);
+
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     scannerProgressBar.setVisible(false);
+
                 }
             });
 
         }
     }
+    private DocumentListener searchTextFieldListener = new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent de) {
+            setDrawablesListModelFilter(mSearchTextField.getText());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent de) {
+            setDrawablesListModelFilter(mSearchTextField.getText());
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent de) {
+            setDrawablesListModelFilter(mSearchTextField.getText());
+        }
+    };
 }
