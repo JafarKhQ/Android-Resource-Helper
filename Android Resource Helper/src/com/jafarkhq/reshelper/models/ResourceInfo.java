@@ -1,5 +1,6 @@
 package com.jafarkhq.reshelper.models;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,12 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class ResourceInfo {
+    public static final String KEY_RESOURCE_INFO = "com.jafarkhq.reshelper.models.ResourceInfo";
+    
     private String name;
     private List<FileInfo> files;
-
+    private BufferedImage mThumbnail;
+    
     public String getName() {
         return name;
     }
@@ -65,5 +69,14 @@ public class ResourceInfo {
         
     }
     
+    public void setResourceThumbnail(BufferedImage thumbnail) {
+        this.mThumbnail = thumbnail;
+        
+    }
+    
+    public BufferedImage getResourceThumbnail() {
+        return this.mThumbnail;
+        
+    }
     
 }

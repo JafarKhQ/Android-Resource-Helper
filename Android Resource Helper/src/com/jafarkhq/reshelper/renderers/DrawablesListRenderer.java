@@ -4,14 +4,14 @@
  */
 package com.jafarkhq.reshelper.renderers;
 
+import com.jafarkhq.reshelper.background.LoadImageRunnable;
+import com.jafarkhq.reshelper.background.LoadImagesWorker;
 import com.jafarkhq.reshelper.models.ResourceInfo;
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
-import java.awt.BorderLayout;
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -33,6 +33,7 @@ public class DrawablesListRenderer extends JPanel implements ListCellRenderer {
     private static final int PREFERD_IMAGE_SIZE = 40;
     private JLabel drawableImage;
     private JLabel drawableName;
+    private BufferedImage mDefaultImage;
 
     public DrawablesListRenderer() {
         super();
@@ -45,34 +46,31 @@ public class DrawablesListRenderer extends JPanel implements ListCellRenderer {
         drawableName = new JLabel();
         add(drawableName);
 
-
+        mDefaultImage = new BufferedImage(PREFERD_IMAGE_SIZE, PREFERD_IMAGE_SIZE, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = mDefaultImage.createGraphics();
+        g.setColor(new Color(0, 0, 0, 0));
+        g.fillRect(0, 0, PREFERD_IMAGE_SIZE, PREFERD_IMAGE_SIZE);
 
     }
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        ResourceInfo resourceInfo = (ResourceInfo) value;
-        drawableName.setText(resourceInfo.getName());
+        synchronized (drawableImage) {
+            ResourceInfo resourceInfo = (ResourceInfo) value;
+            drawableName.setText(resourceInfo.getName());
+            drawableImage.putClientProperty(ResourceInfo.KEY_RESOURCE_INFO, resourceInfo);
 
-        try {
-            BufferedImage img = null;
-            img = ImageIO.read(new File(resourceInfo.getFile(0).getPath()));
-            img = resize(img, PREFERD_IMAGE_SIZE, PREFERD_IMAGE_SIZE);
-            ImageIcon icon = new ImageIcon(img);
-            drawableImage.setIcon(icon);
-        } catch (IOException e) {
+            if (resourceInfo.getResourceThumbnail() != null) {
+                final ImageIcon icon = new ImageIcon(resourceInfo.getResourceThumbnail());
+                drawableImage.setIcon(icon);
+            } else {
+                final ImageIcon icon = new ImageIcon(mDefaultImage);
+                drawableImage.setIcon(icon);
+                LoadImagesWorker.getInstance().loadImage(new LoadImageRunnable(drawableImage, resourceInfo));
+            }
         }
 
         return this;
 
-    }
-
-    public static BufferedImage resize(BufferedImage image, int width, int height) {
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
-        Graphics2D g2d = (Graphics2D) bi.createGraphics();
-        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
-        g2d.drawImage(image, 0, 0, width, height, null);
-        g2d.dispose();
-        return bi;
     }
 }
