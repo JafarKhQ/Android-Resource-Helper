@@ -1,21 +1,23 @@
 package com.jafarkhq.reshelper.frames;
 
 import com.jafarkhq.reshelper.ResourceScanner;
+import com.jafarkhq.reshelper.models.DrawablesListModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.io.File;
 import java.util.logging.Logger;
-import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
 
 /**
@@ -28,13 +30,12 @@ public class MainFrame extends JFrame {
             .getName());
     private javax.swing.JScrollPane mLeftSidePanel;
     private JScrollPane mRightSidePanel;
-    private javax.swing.JTree mFilesTree;
-    
     private JTextField mSearchTextField;
+    private JList mDrawablesList;
+
     // http://www.apl.jhu.edu/~hall/java/Swing-Tutorial/Swing-Tutorial-JTree.html
     // http://docs.oracle.com/javase/tutorial/uiswing/components/tree.html
     // http://www.java2s.com/Tutorial/Java/0240__Swing/1120__JTree.htm
-
     public MainFrame() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,25 +44,27 @@ public class MainFrame extends JFrame {
 
     private void initComponents() {
         initOptionsMenu();
-        
+
         initLeftSidePanel();
         initRightSidePanel();
-        
+
         initMainAppLayout();
 
     }
 
     private void initLeftSidePanel() {
         mLeftSidePanel = new javax.swing.JScrollPane();
-        mFilesTree = new javax.swing.JTree();
-        
+
         Container dummy = new Container();
         BorderLayout borderLayout = new BorderLayout();
         dummy.setLayout(borderLayout);
-        
+
         mSearchTextField = new JTextField();
         dummy.add(mSearchTextField, BorderLayout.NORTH);
-        
+
+        mDrawablesList = new JList();
+        mDrawablesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        dummy.add(mDrawablesList, BorderLayout.CENTER);
         mLeftSidePanel.setViewportView(dummy);
     }
 
@@ -124,9 +127,6 @@ public class MainFrame extends JFrame {
 
     }
 
-    private void initLeftPanel() {
-    }
-
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -136,8 +136,7 @@ public class MainFrame extends JFrame {
             LOGGER.info(projectDir.getAbsolutePath());
             ResourceScanner resourceScanner = new ResourceScanner(projectDir);
             resourceScanner.startScanner();
-            //TODO:
-
+            mDrawablesList.setModel(new DrawablesListModel(resourceScanner.getResourcesTree()));
 
         }
     }

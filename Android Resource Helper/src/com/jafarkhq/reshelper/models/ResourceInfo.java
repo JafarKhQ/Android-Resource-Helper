@@ -57,4 +57,13 @@ public class ResourceInfo {
     public void setFiles(List<FileInfo> files) {
         this.files = files;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+        
+        
+    }
+    
+    
 }
