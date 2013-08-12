@@ -238,6 +238,16 @@ public class FileInfo {
         }
 
         return TYPE_UNKNOWN;
+    }
 
+    public boolean renameFile(String newName){
+        final File oldFile = new File(path);
+        final File newFile = new File(oldFile.getParent(), newName);
+
+        if(newFile.exists()){
+            return false;
+        }
+
+        return oldFile.renameTo(newFile);
     }
 }
