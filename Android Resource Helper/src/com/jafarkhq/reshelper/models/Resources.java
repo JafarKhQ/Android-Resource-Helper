@@ -13,7 +13,6 @@ import java.util.List;
 public class Resources {
 
     private List<ResourceInfo> drawables;
-    private List<ResourceInfo> ninePatches;
 
     public void addFilesList(List<FileInfo> files) {
         if (null == files) {
@@ -29,12 +28,7 @@ public class Resources {
         if (null == fileInfo) {
             return;
         }
-
-        if (true == fileInfo.is9patch()) {
-            addNinePatches(fileInfo);
-        } else {
             addDrawable(fileInfo);
-        }
     }
 
     public void addDrawable(FileInfo fileInfo) {
@@ -63,31 +57,7 @@ public class Resources {
         resourceInfo.addFile(fileInfo);
     }
 
-    public void addNinePatches(FileInfo fileInfo) {
-        if (null == fileInfo) {
-            return;
-        }
 
-        if (null == ninePatches) {
-            ninePatches = new ArrayList<ResourceInfo>();
-        }
-
-        ResourceInfo resourceInfo = null;
-        for (int i = 0; i < ninePatches.size(); i++) {
-            if (ninePatches.get(i).getName().equals(fileInfo.getName())) {
-                resourceInfo = ninePatches.get(i);
-                break;
-            }
-        }
-
-        if (null == resourceInfo) {
-            resourceInfo = new ResourceInfo();
-            resourceInfo.setName(fileInfo.getName());
-            ninePatches.add(resourceInfo);
-        }
-
-        resourceInfo.addFile(fileInfo);
-    }
 
     public int getDrawablesCount() {
         if (null == drawables) {
@@ -105,19 +75,5 @@ public class Resources {
         return drawables.get(position);
     }
 
-    public int getNinePatchesCount() {
-        if (null == ninePatches) {
-            return 0;
-        }
 
-        return ninePatches.size();
-    }
-
-    public ResourceInfo getNinePatche(int position) {
-        if (null == ninePatches) {
-            return null;
-        }
-
-        return ninePatches.get(position);
-    }
 }

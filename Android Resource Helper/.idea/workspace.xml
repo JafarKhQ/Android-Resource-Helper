@@ -8,13 +8,13 @@
     <file path="/a.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365184996775" ignored="false" />
     <file path="/sample.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365184929220" ignored="false" />
     <file path="/a.groovy" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365184982930" ignored="false" />
-    <file path="/ResourceInfo.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365185713287" ignored="false" />
+    <file path="/ResourceInfo.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1376341763281" ignored="false" />
     <file path="/Resources.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365193031792" ignored="false" />
     <file path="/a.dummy" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365188615069" ignored="false" />
     <file path="/ResourceScanner.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1365193829073" ignored="false" />
     <file path="/MainFrame.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1366230835086" ignored="false" />
     <file path="/TestNode.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1366384498631" ignored="false" />
-    <file path="/FileInfo.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1375830264959" ignored="false" />
+    <file path="/FileInfo.java" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1376341833167" ignored="false" />
     <file path="/Dummy.txt" changelist="c6eaca42-1bf7-4adc-90a8-91839277ca51" time="1375989778603" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +30,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -68,6 +67,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -77,20 +77,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ResourceInfo.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResourceInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/ResourceInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="10" selection-start="307" selection-end="307" vertical-scroll-proportion="0.2996707">
+            <state line="49" column="62" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Resources.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Resources.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="33" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="16" column="60" selection-start="365" selection-end="365" vertical-scroll-proportion="0.3008596">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +100,7 @@
       <file leaf-file-name="ResourceScanner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/ResourceScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="45" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.0">
+            <state line="52" column="25" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -107,7 +109,7 @@
       <file leaf-file-name="FileInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/FileInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="249" column="41" selection-start="5152" selection-end="5152" vertical-scroll-proportion="0.0">
+            <state line="49" column="10" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -128,11 +130,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/ResourceInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java" />
         <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/ResourceScanner.java" />
         <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/frames/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/TestNode.java" />
+        <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java" />
+        <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/ResourceInfo.java" />
         <option value="$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/FileInfo.java" />
       </list>
     </option>
@@ -169,27 +171,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android Resource Helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android Resource Helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android Resource Helper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -234,6 +215,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android Resource Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android Resource Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.jafarkhq.reshelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frames" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android Resource Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android Resource Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android Resource Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -250,9 +270,9 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -267,19 +287,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -307,6 +314,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -421,7 +441,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-4" width="1865" height="1085" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -431,16 +451,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16455697" sideWeight="0.7790822" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22091782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16455697" sideWeight="0.77267873" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22732124" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -569,7 +589,9 @@
     <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="56" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -580,45 +602,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/frames/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="31" selection-start="992" selection-end="992" vertical-scroll-proportion="0.023051592">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="26" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.67727774">
+        <state line="13" column="47" selection-start="362" selection-end="362" vertical-scroll-proportion="0.21624589">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/frames/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="33" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/ResourceScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="45" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/FileInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="41" selection-start="5152" selection-end="5152" vertical-scroll-proportion="0.0">
+        <state line="201" column="34" selection-start="6440" selection-end="6440" vertical-scroll-proportion="0.50713503">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/ResourceInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="10" selection-start="307" selection-end="307" vertical-scroll-proportion="0.2996707">
+        <state line="49" column="62" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/FileInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="10" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/ResourceScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="25" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jafarkhq/reshelper/models/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="60" selection-start="365" selection-end="365" vertical-scroll-proportion="0.3008596">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

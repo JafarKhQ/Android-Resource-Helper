@@ -25,21 +25,22 @@ public class FileInfo {
     private String extension;
     private String fullName;
     private String path;
+    private String qualifierName;
     private boolean is9patch;
 
     public FileInfo() {
     }
 
     public FileInfo(File file) {
-        fullName = file.getName();
         size = file.length();
+        fullName = file.getName();
+        qualifierName = file.getParentFile().getName();
         try {
             path = file.getCanonicalPath();
         } catch (IOException ex) {
             Logger.getLogger(FileInfo.class.getName()).log(Level.SEVERE, null, ex);
             path = file.getAbsolutePath();
         }
-
 
         if (fullName.toLowerCase(Locale.ENGLISH).endsWith(NINE_PATCH)) {
             is9patch = true;
@@ -185,7 +186,10 @@ public class FileInfo {
         }
 
         return true;
+    }
 
+    public String getQualifierName(){
+        return qualifierName;
     }
 
     private String getFileExtension() {
