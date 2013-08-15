@@ -1,10 +1,11 @@
 package com.jafarkhq.reshelper.models;
 
+import com.jafarkhq.reshelper.utils.ListUtils;
+import com.jafarkhq.reshelper.utils.TextUtils;
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,10 +26,6 @@ public class ResourceInfo {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getFilesCount() {
         if (null == files) {
             return 0;
@@ -42,9 +39,17 @@ public class ResourceInfo {
             return;
         }
 
+        boolean firstItem = false;
         if (null == files || null==resQualifierMap) {
+            firstItem = true;
             files = new ArrayList<FileInfo>();
             resQualifierMap = new HashMap<String, FileInfo>();
+        }
+
+        if(true==firstItem){
+            name =  fileInfo.getName();
+        } else if(false==name.equals(fileInfo.getName())){
+            throw new IllegalArgumentException("This file \"" + fileInfo.getName() + "\" doesn't belong to \"" + name +"\" list");
         }
 
         files.add(fileInfo);
@@ -71,25 +76,47 @@ public class ResourceInfo {
         return files;
     }
 
-    //public void setFiles(List<FileInfo> files) {
-    //     this.files = files;
-    //   }
+    public boolean renameResource(String newName){
+        if(TextUtils.isEmpty(newName)){
+            return false;
+        }
+
+        boolean res = false;
+        Iterator<FileInfo> iterator = files.iterator();
+        while (iterator.hasNext()){
+            final FileInfo info = iterator.next();
+            res = info.renameFile(newName);
+            if(false==res){
+                break;
+            }
+        }
+
+        if(true==res){
+            name= findResName();
+        }
+
+        return res;
+    }
+
+    private String findResName(){
+        if(ListUtils.isEmpty(files)){
+            return "";
+        }
+
+        return files.get(0).getName();
+    }
 
     @Override
     public String toString() {
         return getName();
-
-
     }
 
     public void setResourceThumbnail(BufferedImage thumbnail) {
         this.mThumbnail = thumbnail;
-
     }
 
     public BufferedImage getResourceThumbnail() {
         return this.mThumbnail;
-
     }
 
 }

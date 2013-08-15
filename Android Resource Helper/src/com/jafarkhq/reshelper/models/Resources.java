@@ -50,7 +50,6 @@ public class Resources {
 
         if (null == resourceInfo) {
             resourceInfo = new ResourceInfo();
-            resourceInfo.setName(fileInfo.getName());
             drawables.add(resourceInfo);
         }
 

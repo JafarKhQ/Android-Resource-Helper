@@ -12,11 +12,14 @@ import java.util.logging.Logger;
  */
 public class FileInfo {
 
+    private static final char DOT = '.';
     private static final String NINE_PATCH = ".9.png";
+
     public static final int TYPE_UNKNOWN = 0;
     public static final int TYPE_PNG = 1;
     public static final int TYPE_JPEG = 2;
     public static final int TYPE_GIF = 3;
+
     private int type;
     private long size;
     private int width;
@@ -197,8 +200,7 @@ public class FileInfo {
             return null;
         }
 
-        final char dot = '.';
-        int pos = fullName.lastIndexOf(dot);
+        int pos = fullName.lastIndexOf(DOT);
         if (pos == -1 || pos == 0) {
             return "";
         }
@@ -211,15 +213,14 @@ public class FileInfo {
             return null;
         }
 
-        final char dot = '.';
-        int pos = fullName.lastIndexOf(dot);
+        int pos = fullName.lastIndexOf(DOT);
         if (pos == -1 || pos == 0) {
             return fullName;
         }
 
         String fileName = fullName.substring(0, pos);
         if (is9patch) {
-            pos = fileName.lastIndexOf(dot);
+            pos = fileName.lastIndexOf(DOT);
             if (pos == -1 || pos == 0) {
                 is9patch = false;
                 return fileName;
@@ -245,13 +246,31 @@ public class FileInfo {
     }
 
     public boolean renameFile(String newName){
-        final File oldFile = new File(path);
-        final File newFile = new File(oldFile.getParent(), newName);
+        final int dotPos = newName.lastIndexOf(DOT);
+        if(-1!=dotPos){
+            return false;
+        }
+
+        final StringBuilder builder = new StringBuilder(newName);
+        if(true==is9patch){
+            builder.append(NINE_PATCH);
+        }else{
+            builder.append(extension);
+        }
+
+        final File oldFile = new File(path, fullName);
+        final File newFile = new File(path, builder.toString());
 
         if(newFile.exists()){
             return false;
         }
 
-        return oldFile.renameTo(newFile);
+        final boolean ret = oldFile.renameTo(newFile);
+        if(true==ret){
+            fullName =   newFile.getName();
+            name = getFileName();
+        }
+
+        return ret;
     }
 }
